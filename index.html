@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Umur</title>
+    <script>
+        // Fungsi untuk memulai permainan
+        function mulaiTebak() {
+            // Variabel umur yang ingin ditebak
+            const umurTebakan = 25;  // Gantilah angka ini dengan umur yang kamu pilih
+
+            // Menyembunyikan elemen lain dan menampilkan input pengguna
+            document.getElementById("tebak-form").style.display = "block";
+            document.getElementById("result").style.display = "none";
+        }
+
+        // Fungsi untuk memeriksa jawaban pengguna
+        function periksaTebakan() {
+            // Mengambil input dari form
+            const tebakan = parseInt(document.getElementById("umur-input").value);
+            const hasil = document.getElementById("result");
+            
+            // Mengecek apakah input valid
+            if (isNaN(tebakan)) {
+                hasil.textContent = "Harap masukkan angka yang valid!";
+                hasil.style.color = "red";
+                return;
+            }
+            
+            // Membandingkan tebakan dengan umurTebakan
+            if (tebakan === 25) {
+                hasil.textContent = "Tebakanmu benar! Umur saya adalah 25 tahun.";
+                hasil.style.color = "green";
+            } else if (tebakan < 25) {
+                hasil.textContent = "Tebakanmu terlalu muda, coba lagi!";
+                hasil.style.color = "orange";
+            } else {
+                hasil.textContent = "Tebakanmu terlalu tua, coba lagi!";
+                hasil.style.color = "orange";
+            }
+            
+            // Menampilkan hasil
+            hasil.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <h1>Selamat datang di permainan Tebak Umur!</h1>
+    <p>Kami memiliki umur yang ingin ditebak. Masukkan tebakanmu di bawah ini!</p>
+
+    <!-- Tombol untuk memulai permainan -->
+    <button onclick="mulaiTebak()">Mulai Permainan</button>
+
+    <!-- Form input untuk tebakan umur -->
+    <div id="tebak-form" style="display:none;">
+        <p>Masukkan tebakan umur saya:</p>
+        <input type="number" id="umur-input" placeholder="Tebak umur saya">
+        <button onclick="periksaTebakan()">Tebak</button>
+    </div>
+
+    <!-- Tempat untuk menampilkan hasil -->
+    <div id="result" style="display:none;"></div>
+</body>
+</html>
